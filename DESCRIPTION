@@ -3,7 +3,7 @@ Type: Package
 Title: Diagnose Between-Group Cell-Cycle Imbalance and DE Sensitivity
 Version: 0.1.0
 Authors@R: person("CellCycleDiag", "contributors", role = c("aut", "cre"),
-    email = "maintainer@example.org")
+    email = "892272536@qq.com")
 Description: Quantifies between-group cell-cycle-state distribution imbalance
     using score-based Kolmogorov-Smirnov distances and binned cyclic-position
     total variation distance. Optionally compares differential expression
