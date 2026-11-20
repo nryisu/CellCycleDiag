@@ -1,7 +1,7 @@
 # CellCycleDiag
 
 An R package for **between-group cell-cycle-state imbalance** and optional
-**correction susceptibility** analysis. Version 0.1.0.
+**correction susceptibility** analysis. 
 
 Cell-cycle variation, between-group imbalance and correction susceptibility
 are distinct concepts. No high/medium/low risk labels, automatic correction
@@ -25,6 +25,14 @@ BiocManager::install(c("tricycle", "MAST", "SingleCellExperiment",
 
 Use a Bioconductor release compatible with your R version. ENSEMBL projection
 may additionally need `org.Hs.eg.db` or `org.Mm.eg.db`.
+
+### From GitHub (recommended)
+
+```r
+install.packages("remotes")
+remotes::install_github("nryisu/CellCycleDiag", force = TRUE, build_vignettes = TRUE)
+library(CellCycleDiag)
+```
 
 ## Runnable metadata example
 
