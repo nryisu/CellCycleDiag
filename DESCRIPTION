@@ -1,0 +1,20 @@
+Package: CellCycleDiag
+Type: Package
+Title: Diagnose Between-Group Cell-Cycle Imbalance and DE Sensitivity
+Version: 0.1.0
+Authors@R: person("CellCycleDiag", "contributors", role = c("aut", "cre"),
+    email = "maintainer@example.org")
+Description: Quantifies between-group cell-cycle-state distribution imbalance
+    using score-based Kolmogorov-Smirnov distances and binned cyclic-position
+    total variation distance. Optionally compares differential expression
+    under direct, score-adjusted and cyclic-adjusted models. These descriptive
+    diagnostics do not determine whether correction is biologically required.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 4.2.0)
+Imports: stats, graphics, utils
+Suggests: Seurat (>= 4.3.0), SeuratObject (>= 4.1.0),
+    SingleCellExperiment, SummarizedExperiment, tricycle, MAST,
+    testthat (>= 3.0.0), knitr, rmarkdown
+VignetteBuilder: knitr
+Config/testthat/edition: 3

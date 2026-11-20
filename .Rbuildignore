@@ -1,0 +1,6 @@
+^\.git$
+^\.github$
+^\.Rbuildignore$
+^RELEASE_CHECKLIST\.md$
+^VALIDATION\.md$
+^.*\.Rproj$

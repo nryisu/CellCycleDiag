@@ -1,0 +1,8 @@
+export(add_cc_representation)
+export(calc_D_score)
+export(calc_D_theta)
+export(diagnose_cc_imbalance)
+export(run_cc_sensitivity)
+export(plot_cc_diagnostic)
+S3method(print,cc_diagnostic)
+S3method(print,cc_sensitivity)

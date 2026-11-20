@@ -1,0 +1,49 @@
+---
+title: "CellCycleDiag: imbalance and sensitivity"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{CellCycleDiag: imbalance and sensitivity}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+library(CellCycleDiag)
+```
+
+## Diagnose observed representations
+
+```{r metadata}
+meta <- data.frame(condition = rep(c("Control", "Treatment"), each = 4),
+                   S.Score = c(0, 0, 1, 1, 0, 1, 1, 2),
+                   G2M.Score = c(0, 0, 0, 0, 1, 1, 1, 1),
+                   theta = c(0, 0, pi, pi, 0, pi, pi, pi))
+res <- diagnose_cc_imbalance(meta, "condition", "Control", "Treatment")
+res
+plot_cc_diagnostic(res)
+```
+
+The example is synthetic and illustrates the interface, not a biological result.
+The expected D_score is 0.625 and D_theta is 0.25.
+
+## Work from a Seurat object
+
+```{r seurat, eval=FALSE}
+seu <- add_cc_representation(seu, species = "human")
+res <- diagnose_cc_imbalance(seu, "condition", "Control", "Treatment")
+sens <- run_cc_sensitivity(seu, "condition", "Control", "Treatment",
+                           donor.var = "donor")
+sens$susceptibility
+plot_cc_diagnostic(sens, "susceptibility")
+```
+
+Normalize expression beforehand and join split Seurat v5 data layers.
+For mouse/ENSEMBL data supply matching phase gene sets explicitly.
+MAST uses common baseline covariates in all three models and adds either
+S/G2M scores or sin/cos of theta. This changes the DE model, not expression values.
+Fixed donor effects do not make cells independent biological replicates.
+Both-empty DEG sets yield undefined Jaccard distance, not evidence of robustness.
+
+Variation, between-group imbalance and susceptibility are distinct concepts.
+There is no recommended correction threshold. See function help for exact
+mathematical conventions, input requirements and result fields.
